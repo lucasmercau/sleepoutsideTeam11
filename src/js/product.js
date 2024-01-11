@@ -8,7 +8,7 @@ function addProductToCart(product) {
 }
 // add to cart button event handler
 async function addToCartHandler(e) {
-  let cart = getLocalStorage("so-cart")|| [];
+  let cart = getLocalStorage("so-cart") || [];
   const product = await dataSource.findProductById(e.target.dataset.id);
   cart.unshift(product);
   addProductToCart(cart);
