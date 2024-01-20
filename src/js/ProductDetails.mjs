@@ -1,4 +1,4 @@
-import { setLocalStorage } from "./utils.mjs"; // This script file will contain the code to dynamically produce the product detail pages.
+import { getLocalStorage, setLocalStorage } from "./utils.mjs"; // This script file will contain the code to dynamically produce the product detail pages.
 
 function productDetailsTemplate(product) {
     return `<section class="product-detail"> <h3>${product.Brand.Name}</h3>
@@ -35,7 +35,10 @@ export default class ProductDetails {
     }
 
     addToCart() {
-        setLocalStorage("so-cart", this.product);
+        let cart = getLocalStorage("so-cart") || [];
+        cart.unshift(this.product);
+        setLocalStorage("so-cart", cart);
+        // setLocalStorage("so-cart", this.product);
     }
 
     renderProductDetails(selector) {
