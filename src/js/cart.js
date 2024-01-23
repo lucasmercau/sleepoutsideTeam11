@@ -27,4 +27,18 @@ function cartItemTemplate(item) {
   return newItem;
 }
 
+document.addEventListener("click", function(event){
+  if (event.target.classList.contains("deleteBtn")){
+    const itemid = event.target.getAttribute("data-id");
+    removeItem(itemid);
+  }
+})
+
+function removeItem(itemid){
+  let cart = getLocalStorage("so-cart");
+  cart = cart.filter(x => x.Id !== itemid);
+  localStorage.setItem("so-cart", JSON.stringify(cart));
+  renderCartContents();
+}
+
 renderCartContents();
