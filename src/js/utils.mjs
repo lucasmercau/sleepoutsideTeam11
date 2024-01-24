@@ -39,3 +39,28 @@ export function setClick(selector, callback) {
   });
   qs(selector).addEventListener("click", callback);
 }
+
+export function renderWithTemplate(templateFn, parentElement, data, callback) {
+  
+  parentElement.insertAdjacentHTML("afterbegin", templateFn);
+  if (callback){
+    callback(data);
+  }
+}
+
+export async function loadHeaderFooter(){
+  const headerTemplate = await loadTemplate("../partials/header.html");
+const footerTemplate = await loadTemplate("../partials/footer.html");
+const headerElement = document.querySelector("#main-header");
+const footerElement = document.querySelector("#main-footer");
+renderWithTemplate(headerTemplate, headerElement);
+renderWithTemplate(footerTemplate, footerElement);
+
+}
+
+export async function loadTemplate(path){
+  const html = await fetch(path).then(convertToText);
+  const template = document.createElement("template");
+  template.innerHTML = html;
+  return template;
+}
