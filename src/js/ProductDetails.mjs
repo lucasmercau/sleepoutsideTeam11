@@ -36,7 +36,13 @@ export default class ProductDetails {
 
     addToCart() {
         let cart = getLocalStorage("so-cart") || [];
-        cart.unshift(this.product);
+        let isProductInCart = cart.some(item => item.Id === this.product.Id); //boolean to see if the product is in the array.
+        if (isProductInCart) {
+            const index = cart.findIndex(item => item.Id === this.product.Id); //Find the index where the quantity needs to be changed.
+            cart[index].quantity += 1; //Adds to the quantity
+        } else {
+            this.product.quantity = 1; // Set quantity to 1
+            cart.unshift(this.product);} // Add product to the array of cart
         setLocalStorage("so-cart", cart);
         // setLocalStorage("so-cart", this.product);
     }
