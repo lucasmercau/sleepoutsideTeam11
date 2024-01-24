@@ -58,9 +58,8 @@ renderWithTemplate(footerTemplate, footerElement);
 
 }
 
-export async function loadTemplate(path){
-  const html = await fetch(path).then(convertToText);
-  const template = document.createElement("template");
-  template.innerHTML = html;
+async function loadTemplate(path){
+  const response = await fetch(path);
+  const template = await response.text();
   return template;
 }
