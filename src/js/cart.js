@@ -6,7 +6,6 @@ loadHeaderFooter();
 const cart = new ShoppingCart("so-cart", ".product-list");
 cart.renderCartContents();
 
-
 // document.addEventListener("click", function(event){
 //   if (event.target.classList.contains("deleteBtn")){
 //     const itemid = event.target.getAttribute("data-id");

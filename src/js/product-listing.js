@@ -3,7 +3,7 @@ import ProductList from "./ProductList.mjs";
 import { loadHeaderFooter, getParam } from "./utils.mjs";
 
 loadHeaderFooter();
-const category = getParam("category")
+const category = getParam("category");
 const dataSource = new ProductData();
 const element = document.querySelector(".product-list");
 const productListing = new ProductList(category, dataSource, element);
