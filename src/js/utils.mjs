@@ -14,12 +14,12 @@ export function setLocalStorage(key, data) {
   localStorage.setItem(key, JSON.stringify(data));
 }
 
-// helper to get parameter strings
+// helper to get parameter strings for example index.hmtl?exampleParam=123
 export function getParam(param) {
-  const queryString = window.location.search;
-  const urlParams = new URLSearchParams(queryString);
-  const product = urlParams.get(param);
-  return product;
+  const queryString = window.location.search; // queryString = "?exampleParam=123"
+  const urlParams = new URLSearchParams(queryString); //urlParams = URLSearchParams {size: 1}
+  const product = urlParams.get(param); //product = "123", param = "exampleParam"
+  return product; // return "123"
 }
 
 // function to take a list of objects and a template and insert the objects as HTML into the DOM
