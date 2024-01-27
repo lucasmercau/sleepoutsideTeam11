@@ -25,7 +25,7 @@ export default class ProductList {
     // renderList(list) {
     //     renderListWithTemplate(productCardTemplate, this.listElement, list);
     // }
-    renderList(list, category) { // Stretch Activity Step 1
+    renderList(list) { // Stretch Activity Step 1
       let filteredList = this.showFourTents(list); // Stretch Activity Step 2
       const htmlStrings = filteredList.map(productCardTemplate);
       this.listElement.insertAdjacentHTML("afterbegin", htmlStrings.join(""));
