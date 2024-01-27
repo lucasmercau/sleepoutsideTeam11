@@ -4,7 +4,7 @@ import { renderListWithTemplate } from "./utils.mjs";
 function productCardTemplate(product) {
     return `<li class="product-card">
       <a href="/product_pages/index.html?product=${product.Id}">
-        <img src="${product.Images.PrimaryLarge}" alt="Image of ${product.Name}">
+        <img src="${product.Images.PrimaryMedium}" alt="Image of ${product.Name}">
         <h3 class="card__brand">${product.Brand.Name}</h3>
         <h2 class="card__name">${product.Name}</h2>
         <p class="product-card__price">$${product.FinalPrice}</p>
@@ -30,9 +30,8 @@ export default class ProductList {
       const htmlStrings = filteredList.map(productCardTemplate);
       this.listElement.insertAdjacentHTML("afterbegin", htmlStrings.join(""));
     }
-    
     showFourTents(list) { // Stretch Activity Step 2
-      return list.filter(function(product){ return product.Id != "989CG" && product.Id != "880RT"});
-    }
+        return list.filter(function(product){ return product.Id != "989CG" && product.Id != "880RT"});
+    } 
 }
 
