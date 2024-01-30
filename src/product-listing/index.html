@@ -6,32 +6,6 @@
     <title>Sleep Outside | Home</title>
     <link rel="stylesheet" href="/css/style.css" />
     <script src="/js/product-listing.js" type="module"></script>
-    <script src="js/Alert.js" type="module"></script>
-    <script type="module">
-            import Alert from './Alert.js';
-            async function loadAlerts() {
-        const response = await fetch('alerts.json');
-        const data = await response.json();
-
-        const alertManager = new Alert();
-        await alertManager.loadAlerts();
-      }
-
-      document.addEventListener('DOMContentLoaded', () => {
-        async function loadAlerts() {
-          const response = await fetch('alerts.json');
-          const data = await response.json();
-
-          const alertManager = new Alert();
-          await alertManager.loadAlerts();
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-          loadAlerts();
-        });
-      });
-
-    </script>
   </head>
   <body>
     <header class="divider" id="main-header"></header>
