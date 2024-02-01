@@ -6,17 +6,24 @@ loadHeaderFooter();
 const cart = new ShoppingCart("so-cart", ".product-list");
 cart.renderCartContents();
 
-// const cartPrice = localStorage.getItem("so-cart");
+const showTotal = getLocalStorage("so-cart");
+if (showTotal.length !== 0) {
+    // show our checkout button and total if there are items in the cart.
+    document.querySelector(".cart-footer").classList.remove("hide");
+    const cartPrice = localStorage.getItem("so-cart");
 
-// const cartItem = JSON.parse(cartPrice);
+    const cartItem = JSON.parse(cartPrice);
 
-// let totalPrice = 0;
-// cartItem.forEach(item => {
-//     const price = item.FinalPrice * item.quantity;
-//     totalPrice += price;
-// })
+    let totalPrice = 0;
+    cartItem.forEach(item => {
+        const price = item.FinalPrice * item.quantity;
+        totalPrice += price;
+    })
 
-// document.querySelector(".cart-total").textContent += `$ ${totalPrice.toFixed(2)}`;
+    document.querySelector(".cart-total").textContent += ` $${totalPrice.toFixed(2)}`;
+}
+
+
 
 let delIndex = ""; //declare a variable to store the index of the item to be deleted
 const cartItems = getLocalStorage("so-cart"); // get cart content from localStorage and store in cartItems variable

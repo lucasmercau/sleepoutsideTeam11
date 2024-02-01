@@ -166,6 +166,39 @@ button {
   text-decoration: none;
   color: var(--dark-grey);
 }
+.column {
+  flex-direction: column;
+}
+.hide {
+  display: none;
+}
+
+.cart-total {
+  text-align: right;
+}
+.cart-footer {
+  display: flex;
+  /* justify-content: space-between;
+  align-items: center; */
+  padding: 0 0.5em;
+  /* new ones I added */
+  align-items: flex-start;
+  flex-direction: column-reverse;
+}
+.cart-footer > a {
+  /* display: block; */
+  padding: 0.3em 0.5em;
+  background-color: var(--primary-color);
+  text-decoration: none;
+  border-radius: 5px;
+  /* new ones I added */
+  margin-bottom: 10px;
+}
+.cart-footer a:link,
+.cart-footer a:visited {
+  color: var(--dark-grey);
+}
+
 /* Styles for product lists */
 .product-card {
   flex: 1 1 45%;
