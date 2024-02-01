@@ -6,20 +6,17 @@ loadHeaderFooter();
 const cart = new ShoppingCart("so-cart", ".product-list");
 cart.renderCartContents();
 
+// const cartPrice = localStorage.getItem("so-cart");
 
-// document.addEventListener("click", function(event){
-//   if (event.target.classList.contains("deleteBtn")){
-//     const itemid = event.target.getAttribute("data-id");
-//     removeItem(itemid);
-//   }
+// const cartItem = JSON.parse(cartPrice);
+
+// let totalPrice = 0;
+// cartItem.forEach(item => {
+//     const price = item.FinalPrice * item.quantity;
+//     totalPrice += price;
 // })
 
-// function removeItem(itemid){
-//   let cart = getLocalStorage("so-cart");
-//   cart = cart.filter(x => x.Id !== itemid);
-//   localStorage.setItem("so-cart", JSON.stringify(cart));
-//   renderCartContents();
-// }
+// document.querySelector(".cart-total").textContent += `$ ${totalPrice.toFixed(2)}`;
 
 let delIndex = ""; //declare a variable to store the index of the item to be deleted
 const cartItems = getLocalStorage("so-cart"); // get cart content from localStorage and store in cartItems variable
@@ -27,15 +24,8 @@ const cartItems = getLocalStorage("so-cart"); // get cart content from localStor
 document.addEventListener("click", function(event){
     if (event.target.classList.contains("deleteBtn")){
         let tagItem = event.target.id; //target the id of the clicked button which shares same id as product id
-        cartItems.forEach((item)  => {
-            if (item.id == tagItem){ //if the button id matches with product id
-                delIndex = cartItems.findIndex((ele) => ele.id == tagItem) // get the index of item and assign it to earlier
-                return delIndex;                                    //declared delIndex variable 
-            }
-        });
-        cartItems.splice(delIndex, 1);      //use splice method to remove the product from the array
-        localStorage.clear();            //clear the localstarage
-        setLocalStorage("so-cart", cartItems);     //replace localstarage with the new cartItems array 
+        const newItems = cartItems.filter(function(product){ return product.Id != tagItem});         
+        setLocalStorage("so-cart", newItems);     //replace localstarage with the new cartItems array 
         window.location.reload();              // use location reload to display a fresh page.
     }
 })
