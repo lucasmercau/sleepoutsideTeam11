@@ -169,9 +169,6 @@ button {
 .column {
   flex-direction: column;
 }
-.hide {
-  display: none;
-}
 
 .cart-total {
   text-align: right;
@@ -197,6 +194,10 @@ button {
 .cart-footer a:link,
 .cart-footer a:visited {
   color: var(--dark-grey);
+}
+
+.hide {
+  display: none;
 }
 
 /* Styles for product lists */
