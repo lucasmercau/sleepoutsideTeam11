@@ -1,4 +1,4 @@
-import { loadHeaderFooter } from "./utils.mjs";
+import { loadHeaderFooter, alertMessage, removeAllAlerts } from "./utils.mjs";
 import CheckoutProcess from "./CheckoutProcess.mjs";
 
 loadHeaderFooter();
@@ -11,9 +11,20 @@ document
   .addEventListener("blur", myCheckout.calculateOrdertotal.bind(myCheckout));
 // listening for click on the button
 document.querySelector("#checkoutSubmit").addEventListener("click", (e) => {
-  e.preventDefault();
-
-  myCheckout.checkout();
+    e.preventDefault();
+    const myForm = document.forms[0];
+    const chk_status = myForm.checkValidity();
+    myForm.reportValidity();
+    if(chk_status) {
+        myCheckout.checkout();
+    } else {
+        removeAllAlerts();
+        Array.from(myForm.elements).forEach(element => {
+            if (!element.checkValidity()) {
+                alertMessage(element.validationMessage);
+            }
+        });
+    }
 });
 
 // this is how it would look if we listen for the submit on the form
