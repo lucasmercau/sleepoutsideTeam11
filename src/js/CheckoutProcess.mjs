@@ -1,4 +1,4 @@
-import { getLocalStorage } from "./utils.mjs";
+import { setLocalStorage, getLocalStorage, alertMessage, removeAllAlerts } from "./utils.mjs";
 import ExternalServices from "./ExternalServices.mjs";
 
 const services = new ExternalServices();
@@ -53,7 +53,7 @@ export default class CheckoutProcess {
     // calculate the total of all the items in the cart
     const amounts = this.list.map((item) => item.FinalPrice * item.quantity);
     this.itemTotal = amounts.reduce((sum, item) => sum + item);
-    summaryElement.innerText = "$" + this.itemTotal;
+    summaryElement.innerText = "$" + this.itemTotal.toFixed(2);
   }
   calculateOrdertotal() {
     const itemQuantities = this.list.map((item) => item.quantity);
@@ -73,7 +73,7 @@ export default class CheckoutProcess {
     const orderTotal = document.querySelector(
       this.outputSelector + " #orderTotal"
     );
-    shipping.innerText = "$" + this.shipping;
+    shipping.innerText = "$" + this.shipping.toFixed(2);
     tax.innerText = "$" + this.tax;
     orderTotal.innerText = "$" + this.orderTotal;
   }
@@ -91,6 +91,8 @@ export default class CheckoutProcess {
     try {
       const res = await services.checkout(json);
       console.log(res);
+      setLocalStorage("so-cart", []);
+      location.assign("/checkout/success.html");
     } catch (err) {
       console.log(err);
     }
