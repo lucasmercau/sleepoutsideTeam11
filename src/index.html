@@ -6,11 +6,10 @@
     <title>Sleep Outside | Home</title>
     <link rel="stylesheet" href="/css/style.css" />
     <script src="js/main.js" type="module"></script>
+    <script src="js/register.js" type="module"></script>
   </head>
   <body>
-    <header class="divider" id="main-header">
-
-    </header>
+    <header class="divider" id="main-header"></header>
     <main class="divider">
       <div class="hero">
         <img
@@ -71,6 +70,23 @@
             </a>
           </li>
         </ul>
+      </section>
+      <section class="register-box">
+        <span id="close">❌</span>
+        <h2>Register With Us</h2>
+        <form action="./checkout/success.html" id="reg-form">
+          <label for="names">
+            Full Name: <input type="text" name="names" id="names" required />
+          </label>
+          <label for="email">
+            Email: <input type="email" name="email" id="email" required />
+          </label>
+          <label for="password">
+            Password:
+            <input type="text" name="password" id="password" required />
+          </label>
+          <input type="submit" id="submitBtn" value="Register" />
+        </form>
       </section>
     </main>
     <footer id="main-footer"></footer>
